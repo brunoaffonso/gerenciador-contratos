@@ -1,0 +1,66 @@
+{% extends 'dashboard.html' %}
+
+{% load widget_tweaks %}
+
+{% block title %}Cadastrar Unidade{% endblock %}
+
+{% block main %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card mt-3">
+                <div class="card-header">
+                    <div class="card-title">
+                        <h4 class="card-title">{{ title }}</h4>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Data da Repactuação</label>
+                                    {% render_field form.data_1 class+="form-control" placeholder=form.valor_2.label %}
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Data para Retroagir</label>
+                                    {% render_field form.data_2 class+="form-control" placeholder=form.valor_2.label %}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Valor da Repactuação</label>
+                                    {% render_field form.valor_1 class+="form-control" placeholder=form.valor_2.label %}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label>Observações</label>
+                                    {% render_field form.obs class+="form-control" %}
+                                </div>
+                            </div>
+                        </div>
+                        <button class="btn btn-primary" type="submit">Salvar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+window.onload = function() {
+    marcaMenu("cat-processos");
+};
+</script>
+
+{% endblock %}

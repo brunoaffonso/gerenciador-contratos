@@ -1,0 +1,16 @@
+{% for processo in object_list %}
+<ol>
+    <li><a href="{% url 'ver-processo' processo.id %}">{{ processo.numero }}</a></li>
+    <li><a href="{% url 'atualiza-processo' processo.id %}">{{ processo.nome }}</a></li>
+    <li>{{ processo.descricao }}</li>
+    <li>{{ processo.tipo }}</li>
+    <li>{{ processo.unidade }}</li>
+    <li>{{ processo.empresa }}</li>
+    <li>{{ processo.valor_contrato }}</li>
+    <li>{{ processo.data_inicio }}</li>
+    <li>{{ processo.data_fim }}</li>
+    <li>{{ processo.fiscal }}</li>
+    <li>{{ processo.encerrdo }}</li>
+    <li><a href="{% url 'deleta-processo' processo.id %}">Deletar</a></li>
+</ol>
+{% endfor %}

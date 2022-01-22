@@ -1,0 +1,67 @@
+{% extends 'dashboard.html' %}
+
+{% load widget_tweaks %}
+
+{% block title %}Cadastrar Unidade{% endblock %}
+
+{% block main %}
+<div class="container">
+    <div class="card mt-3">
+        <div class="card-body">
+            <form method="post">
+                {% csrf_token %}
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Nome</label>
+                            {% render_field form.nome class+="form-control" placeholder=form.nome.label %}
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Matrícula</label>
+                            {% render_field form.matricula class+="form-control" placeholder=form.matricula.label %}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label>CPF</label>
+                            {% render_field form.cpf class+="form-control" placeholder="Somente números" %}
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label>Vínculo</label>
+                            {% render_field form.vinculo class+="form-control" placeholder="Selecione" %}
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label>Disciplina</label>
+                            {% render_field form.disciplina class+="form-control" placeholder="Selecione" %}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>Observações</label>
+                            {% render_field form.obs class+="form-control" required="false" %}
+                        </div>
+                    </div>
+                </div>
+                <button class="btn btn-primary" type="submit">Cadastrar</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+window.onload = function() {
+    marcaMenu("cat-cadastro");
+};
+</script>
+
+{% endblock %}

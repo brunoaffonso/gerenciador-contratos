@@ -1,0 +1,11 @@
+{% for medicao in object_list %}
+<ol>
+    <li><a href="{% url 'ver-medicao' medicao.id %}">{{ medicao.nome }}</a></li>
+    <li><a href="{% url 'atualiza-medicao' medicao.id %}">{{ medicao.contrato }}</a></li>
+    <li>{{ medicao.data_medicao }}</li>
+    <li>{{ medicao.valor_1 }}</li>
+    <li>{{ medicao.valor_2 }}</li>
+    <li>{{ medicao.data_assinatura }}</li>
+    <li><a href="{% url 'deleta-medicao' medicao.id %}">Deletar</a></li>
+</ol>
+{% endfor %}

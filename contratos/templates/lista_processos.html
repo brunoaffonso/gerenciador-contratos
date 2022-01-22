@@ -1,0 +1,60 @@
+{% extends 'dashboard.html' %}
+
+{% block title %}Listagem de contratos{% endblock %}
+
+{% block main %}
+
+<div class="container">
+    <div class="row mt-4 mb-5">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">Lista de Processos</h4>
+            </div>
+            <div class="card-body">
+                <table class="table table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th>Número</th>
+                            <th>Nome</th>
+                            <th>Tipo</th>
+                            <th>Unidade</th>
+                            <th>Empresa</th>
+                            <th>Valor</th>
+                            <th>Data Início</th>
+                            <th>Ativo?</th>
+                        </tr>
+                        <tbody>
+                            {% for p in processos %}
+                            <tr>
+                                <td>{{ p.numero }}</td>
+                                <td>{{ p.nome }}</td>
+                                <td>{{ p.tipo }}</td>
+                                <td>{{ p.unidade }}</td>
+                                <td>{{ p.empresa }}</td>
+                                <td>R$ {{ p.valor_contratado }}</td>
+                                <td>{{ p.data_inicio }}</td>
+                                {% if p.ativo == True %}
+                                <td><i class="material-icons md-dark md-36">check</i></td>
+                                {% else %}
+                                <td><i class="material-icons md-dark md-36"></i></td>
+                                {% endif %}
+                                <td><a href="{% url 'ver-processo' p.id %}"><i class="material-icons md-dark md-36">zoom_in</i></a></td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </thead>
+                </table>
+                <a href="{% url 'cria-processo' %}" role="button" class="btn btn-primary">Criar Processo</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+window.onload = function() {
+    marcaMenu("cat-processos");
+};
+</script>
+
+{% endblock %}
+

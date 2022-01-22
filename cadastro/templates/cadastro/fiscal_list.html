@@ -1,0 +1,9 @@
+{% for fiscal in object_list %}
+<ol>
+    <li><a href="{% url 'ver-fiscal' fiscal.id %}">{{ fiscal.nome }}</a></li>
+    <li><a href="{% url 'atualiza-fiscal' fiscal.id %}">{{ fiscal.matricula }}</a></li>
+    <li>{{ fiscal.cpf }}</li>
+    <li>{{ fiscal.vinculo }}</li>
+    <li><a href="{% url 'deleta-fiscal' fiscal.id %}">Deletar</a></li>
+</ol>
+{% endfor %}

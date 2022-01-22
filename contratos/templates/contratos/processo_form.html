@@ -1,0 +1,129 @@
+{% extends 'dashboard.html' %}
+
+{% load widget_tweaks %}
+
+{% block title %}Cadastrar Unidade{% endblock %}
+
+{% block main %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card mt-3">
+                <div class="card-header">
+                    <div class="card-title">
+                        <h4 class="card-title">Criar Processo</h4>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label>Número do Contrato</label>
+                                    {% render_field form.numero class+="form-control" placeholder=form.numero.label %}
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Nome</label>
+                                    {% render_field form.nome class+="form-control" placeholder=form.nome.label %}
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label>Tipo do Contrato</label>
+                                    {% render_field form.tipo class+="form-control" placeholder=form.tipo.label %}
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label>Unidade</label>
+                                    {% render_field form.unidade class+="form-control" placeholder=form.unidade.label %}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label>Descrição do Contrato</label>
+                                    {% render_field form.descricao class+="form-control" placeholder=form.descricao.label %}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Contratada</label>
+                                    {% render_field form.empresa class+="form-control" placeholder=form.empresa.label %}
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label>Valor Inicial</label>
+                                    {% render_field form.valor_inicial class+="form-control" placeholder=form.valor_inicial.label %}
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label>Valor Contratado</label>
+                                    {% render_field form.valor_contratado class+="form-control" placeholder=form.valor_contratado.label %}
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label>Valor Atual</label>
+                                    {% render_field form.valor_atual class+="form-control" placeholder=form.valor_atual.label %}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label>Data de ìnício</label>
+                                    {% render_field form.data_inicio class+="form-control" placeholder=form.data_inicio.label %}
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label>Data final</label>
+                                    {% render_field form.data_fim class+="form-control" placeholder=form.data_fim.label %}
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Fiscal</label>
+                                    {% render_field form.fiscal class+="form-control" placeholder=form.fiscal.label %}
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label>Contrato Ativo?</label>
+                                    {% render_field form.ativo class+="form-control" placeholder=form.ativo.label %}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label>Observações</label>
+                                    {% render_field form.obs class+="form-control" %}
+                                </div>
+                            </div>
+                        </div>
+                        <button class="btn btn-primary" type="submit">Cadastrar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+window.onload = function() {
+    marcaMenu("cat-processos");
+};
+</script>
+
+{% endblock %}
+

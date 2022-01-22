@@ -1,0 +1,9 @@
+{% for unidade in object_list %}
+<ol>
+    <li><a href="{% url 'ver-unidade' unidade.id %}">{{ unidade.nome }}</a></li>
+    <li><a href="{% url 'atualiza-unidade' unidade.id %}">{{ unidade.descricao }}</a></li>
+    <li>{{ unidade.cidade }}</li>
+    <li>{{ unidade.estado }}</li>
+    <li><a href="{% url 'deleta-unidade' unidade.id %}">Deletar</a></li>
+</ol>
+{% endfor %}

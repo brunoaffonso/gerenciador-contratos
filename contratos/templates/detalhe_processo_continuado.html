@@ -1,0 +1,142 @@
+{% extends 'dashboard.html' %}
+
+{% block title %}Listagem de contratos{% endblock %}
+
+{% block main %}
+
+<div class="container">
+    <h2>{{ p.nome }} - Continuado</h2>
+    <h5>{{ p.descricao }}</h5>
+    <div class="row mt-3 mb-5">
+        <div class="col-md-5">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">Detalhes do Processo</h4>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive table-full-width">
+                        <table class="table table-sm table-hover">
+                            <tr>
+                                <th>Número do Processo</th>
+                                <td>{{ p.numero}}</td>
+                            </tr>
+                            <tr>
+                                <th>Tipo</th>
+                                <td>{{ p.tipo }}</td>
+                            </tr>
+                            <tr>
+                                <th>Unidade</th>
+                                <td>{{ p.unidade }}</td>
+                            </tr>
+                            <tr>
+                                <th>Licitante Vencedora</th>
+                                <td>{{ p.empresa }}</td>
+                            </tr>
+                            <tr>
+                                <th>Valor Inicial do Contrato</th>
+                                <td>{{ p.valor_inicial }}</td>
+                            </tr>
+                            <tr>
+                                <th>Valor Total do Contrato</th>
+                                <td>{{ p.valor_contratado }}</td>
+                            </tr>
+                            <tr>
+                                <th>Valor Atual do Contrato</th>
+                                <td>{{ p.valor_atual }}</td>
+                            </tr>
+                            <tr>
+                                <th>Percentual de Medições</th>
+                                <td>{{ p.percent_med }}</td>
+                            </tr>
+                            <tr>
+                                <th>Percentual de Apostilamentos</th>
+                                <td>{{ p.percent_apost }}</td>
+                            </tr>
+                            <tr>
+                                <th>Percentual de Acréscimos</th>
+                                <td>{{ p.percent_acres }}</td>
+                            </tr>
+                            <tr>
+                                <th>Percentual de Supressões</th>
+                                <td>{{ p.percent_sup }}</td>
+                            </tr>
+                            <tr>
+                                <th>Data de Início</th>
+                                <td>{{ p.data_inicio}}</td>
+                            </tr>
+                            <tr>
+                                <th>Data de Término</th>
+                                <td>{{ p.data_fim}}</td>
+                            </tr>
+                            <tr>
+                                <th>Fiscais Responsáveis</th>
+                                <td>
+                                    <ul>
+                                        {% for fiscal in p.fiscal.all %}
+                                        <li>{{ forloop.counter }} - {{ fiscal }}</li>
+                                        {% endfor %}
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Contrato Ativo</th>
+                                {% if p.ativo == True %}
+                                <td>Sim</td>
+                                {% else %}
+                                <td>Não</td>
+                                {% endif %}
+                            </tr>
+                        </table>
+                    </div>
+                    <a href="{% url 'atualiza-processo' p.id %}" role="button" class="btn btn-warning">Editar</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-7">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">Medições do Contrato</h4>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive table-full-width">
+                        <table class="table table-hover table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Atividade</th>
+                                    <th>Data da Medição</th>
+                                    <th>Valor Previsto</th>
+                                    <th>Valor Executado</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for m in m %}
+                                <tr>
+                                    <td>{{ m.nome }}</td>
+                                    <td>{{ m.data_1|date:"j M Y" }}</td>
+                                    <td>{{ m.valor_1 }}</td>
+                                    <td>{{ m.percent_event }}%</td>
+                                    <th><a href="{% url 'atualiza-evento-continuado' p.id m.id %}"><i class="material-icons md-dark">edit</i></a></th>
+                                    <th><a href="{% url 'deleta-medicao' m.id %}" onclick="apagaMedicao()"><i class="material-icons md-dark">delete_outline</i></a></th>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    <a href="{% url 'adiciona_evento_continuado' p.id 'Medição' %}" role="button" class="btn btn-primary">Adicionar Medição</a>
+                    <a href="{% url 'adiciona_evento_continuado' p.id 'Apostilamento' %}" role="button" class="btn btn-primary">Adicionar Reajustamento</a>
+                    <a href="{% url 'adiciona_evento_continuado' p.id 'Aditivo de Acréscimo' %}" role="button" class="btn btn-primary">Adicionar Acréscimo</a>
+                    <a href="{% url 'adiciona_evento_continuado' p.id 'Aditivo de Supressão' %}" role="button" class="btn btn-primary">Adicionar Supressão</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+window.onload = function() {
+    marcaMenu("cat-processos");
+};
+</script>
+
+{% endblock %}
+
