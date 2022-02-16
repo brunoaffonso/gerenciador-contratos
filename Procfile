@@ -1,0 +1,1 @@
+web: gunicorn secopro.wsgi —log-file -

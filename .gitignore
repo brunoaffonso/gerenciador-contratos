@@ -156,4 +156,32 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
+### Django ###
+*.log
+*.pot
+*.pyc
+__pycache__
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+media
+*.sqlite3
+*pyc
+
+staticfiles
+
+# Environments
+.env
+.env-heroku
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+.env
+.venv
+*.sqlite3
+
 # End of https://www.gitignore.io/api/windows,pycharm+all,sublimetext,visualstudiocode
