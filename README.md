@@ -6,10 +6,6 @@ This project is a simple dashboard, builded in Django.
 
 This application was made to managemente of contracts.
 
-## Project in Action
-This project is hosted in Heroku
-[Live demo](https://gerenciadorprojetos.herokuapp.com/)
-
 ## Installation
 Building and running the project in your local dev environment is very easy. Be sure you have [Git](https://git-scm.com/downloads) and [Node.js](https://nodejs.org/) installed, then follow the directions below.
 
